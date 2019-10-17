@@ -1,0 +1,16 @@
+<!-- CTA -->
+<section id="{{ .section.section_id }}" class="wrapper {{ .section.background_style }}">
+    <div class="inner">
+        <header>
+            <h2>{{ replace .section.title "\n" "<br />" | safeHTML }}</h2>
+            {{ partial "markdownify-block" .section.text }}
+        </header>
+        {{ if .section.actions }}
+            <ul class="actions stacked">
+                {{ range $action := .section.actions }}
+                    <li><a href="{{ if strings.HasPrefix $action.url "#" }}{{ $action.url }}{{ else }}{{ $action.url | relURL }}{{ end }}" class="button fit{{ if $action.is_primary }} primary{{ end }}{{ if $action.is_scrolly }} scrolly{{ end }}">{{ $action.label }}</a></li>
+                {{ end }}
+            </ul>
+        {{ end }}
+    </div>
+</section>

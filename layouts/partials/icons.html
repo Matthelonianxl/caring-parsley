@@ -1,0 +1,16 @@
+<!-- One -->
+<section id="{{ .section.section_id }}" class="wrapper {{ .section.background_style }} special">
+    <div class="inner">
+        <header class="major">
+            <h2>{{ replace .section.title "\n" "<br />" | safeHTML }}</h2>
+            {{ partial "markdownify-block" .section.subtitle }}
+        </header>
+        {{ if .section.feature_icons }}
+            <ul class="icons major">
+                {{ range $item := .section.feature_icons }}
+                    <li><span class="icon {{ $item.icon }} major {{ $item.style }}"><span class="label">{{ $item.title }}</span></span></li>
+                {{ end }}
+            </ul>
+        {{ end }}
+    </div>
+</section>

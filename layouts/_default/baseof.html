@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>    
+        
+        <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ (resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "assets/css/main.css" . | resources.ToCSS (dict "indentWidth" 4 "outputStyle" "nested" "precision" 10)).Permalink }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <noscript><link rel="stylesheet" href="{{ "assets/css/noscript.css" | relURL }}" /></noscript>
+        
+    </head>
+    <body class="{{ if eq .Params.layout .Site.Params.landing_template }}landing {{ end }}">
+        
+        <!-- Page Wrapper -->
+            <div id="page-wrapper">
+                
+                {{ partial "header.html" . }}
+                
+                {{ block "content" . }}{{ end }}
+                
+                {{ partial "footer.html" . }}
+                
+            </div>
+        <!-- Scripts -->
+        <script src="{{ "assets/js/jquery.min.js" | relURL }}"></script>
+        <script src="{{ "assets/js/jquery.scrollex.min.js" | relURL }}"></script>
+        <script src="{{ "assets/js/jquery.scrolly.min.js" | relURL }}"></script>
+        <script src="{{ "assets/js/browser.min.js" | relURL }}"></script>
+        <script src="{{ "assets/js/breakpoints.min.js" | relURL }}"></script>
+        <script src="{{ "assets/js/util.js" | relURL }}"></script>
+        <script src="{{ "assets/js/init.js" | relURL }}"></script>
+        <script src="{{ "assets/js/page_load.js" | relURL }}"></script>
+    </body> 
+</html>

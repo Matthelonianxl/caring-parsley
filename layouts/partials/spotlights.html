@@ -1,0 +1,14 @@
+<!-- Two -->
+<section id="{{ .section.section_id }}" class="wrapper alt {{ .section.background_style }}">
+    {{ range $spotlight := .section.spotlights }}
+        <section class="spotlight">
+            {{ if $spotlight.home_img_path }}
+                <div class="image"><img src="{{ $spotlight.home_img_path | relURL }}" alt="" /></div>
+            {{ end }}
+            <div class="content">
+                <h2>{{ replace $spotlight.title "\n" "<br />" | safeHTML }}</h2>
+                {{ partial "markdownify-block" $spotlight.text }}
+            </div>
+        </section>
+    {{ end }}
+</section>

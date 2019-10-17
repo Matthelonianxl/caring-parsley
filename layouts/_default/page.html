@@ -1,0 +1,16 @@
+{{ define "content" }}
+
+    <!-- Main -->
+    <article id="main">
+        <header>
+            <h2>{{ .Title }}</h2>
+            {{ partial "markdownify-block" .Params.subtitle }}
+        </header>
+        <section class="wrapper {{ .Params.background_style }}">
+            <div class="inner">
+                {{ .Content }}
+            </div>
+        </section>
+    </article>
+
+{{ end }}
